@@ -2,16 +2,16 @@
 
 void LinearProbing::createAccount(std::string id, int count)
 {
-    Account krishna;
-    krishna.id = id;
-    krishna.balance = count;
+    Account priyanshu;
+    priyanshu.id = id;
+    priyanshu.balance = count;
     int n = hash(id);
     size++;
     for (int i = n; i < bankStorage1d.size(); i++)
     {
         if (v[i] == false)
         {
-            bankStorage1d[i] = krishna;
+            bankStorage1d[i] = priyanshu;
             v[i] = true;
             return;
         }
@@ -20,7 +20,7 @@ void LinearProbing::createAccount(std::string id, int count)
     {
         if (v[i] == false)
         {
-            bankStorage1d[i] = krishna;
+            bankStorage1d[i] = priyanshu;
             v[i] = true;
             return;
         }

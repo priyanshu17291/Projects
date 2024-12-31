@@ -2,9 +2,9 @@
 // done // checked
 void Chaining::createAccount(std::string id, int count)
 {
-    Account krishna;
-    krishna.id = id;
-    krishna.balance = count;
+    Account priyanshu;
+    priyanshu.id = id;
+    priyanshu.balance = count;
     int n = hash(id);
     int p = bankStorage2d.size();
     if (n >= bankStorage2d.size())
@@ -16,11 +16,11 @@ void Chaining::createAccount(std::string id, int count)
     }
     if (v[n] == true)
     {
-        bankStorage2d[n].push_back(krishna);
+        bankStorage2d[n].push_back(priyanshu);
     }
     else
     {
-        bankStorage2d[n].push_back(krishna);
+        bankStorage2d[n].push_back(priyanshu);
         v[n] = true;
     }
     size++;

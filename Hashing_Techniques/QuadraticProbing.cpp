@@ -2,9 +2,9 @@
 
 void QuadraticProbing::createAccount(std::string id, int count)
 {
-    Account krishna;
-    krishna.id = id;
-    krishna.balance = count;
+    Account priyanshu;
+    priyanshu.id = id;
+    priyanshu.balance = count;
     int n = hash(id);
     int j = 0;
     for (int i = n + j * j; j < bankStorage1d.size(); j++, i = n + j * j)
@@ -15,7 +15,7 @@ void QuadraticProbing::createAccount(std::string id, int count)
         }
         if (!v[i])
         {
-            bankStorage1d[i] = krishna;
+            bankStorage1d[i] = priyanshu;
             v[i] = true;
             size++;
             return;

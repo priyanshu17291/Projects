@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reactor Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="main"> 
+        <header>
+            <h1>Multipurpose Reactor Calculator</h1>
+        </header>
+        <div id="instruction">
+            <p>Enter the following Reaction conditions for reaction (aA + bB -> cC + dD)</p>
+        </div>
+        <section>
+            <form id="reactionConditions">
+                <select name="Reactor" required>
+                    <!-- <option value="">Select a Reactor</option> -->
+                    <option value="Batch">Batch Reactor</option>
+                    <option value="CSTR">CSTR (Continuous Stirred Tank Reactor)</option>
+                    <option value="PFR">PFR (Plug Flow Reactor) </option>
+                    <option value="PBR">PBR (Packed Bed Reactor)</option>
+                </select>
+                <select name="Phase">
+                    <!-- <option value="">Phase of Reaction</option> -->
+                    <option value="liquid">Liquid phase</option>
+                    <option value="gas">Gas phase</option>
+                </select>
+                <select name="Pressure">
+                    <option value="constantP">Constant Pressure</option>
+                    <option value="variableP">Variable Pressure</option>
+                </select>
+                <select name="Question">
+                    <option value="xtov">Volume from Conversion</option>
+                    <option value="vtox">Conversion from Volume</option>
+                </select>
+                <input type="number" step="0.000001" name="InitialP" placeholder="Initial Pressure in Bar"
+                    value="1.0135">
+                <input type="number" step="0.000001" name="InitialT" placeholder="Initial Temperature in °C" value="25">
+                <input type="number" step="0.000001" name="Inert" placeholder="Inert Concentration" value="0">
+                <input type="number" step="0.000001" name="Conversion" placeholder="Conversion" value="0.99">
+                <input type="number" step="0.000001" name="ConcentrationA"
+                    placeholder="Initial Concentration of Reactant A" value="10">
+                <input type="number" step="0.000001" name="ConcentrationB"
+                    placeholder="Initial Concentration of Reactant B" value="10">
+                <input type="number" step="0.000001" name="ConcentrationC"
+                    placeholder="Initial Concentration of Product C" value="0">
+                <input type="number" step="0.000001" name="ConcentrationD"
+                    placeholder="Initial Concentration of Product D" value="0">
+                <input type="text" name="Stoichiometry"
+                    placeholder="Stoichiometry coeffiecient of A, B, C, D respectively" value="1, 1, 1, 1">
+                <input type="number" step="0.000001" name="RateConstant" placeholder="Rate Constant of Reaction" value="1">
+                <input type="number" step="0.000001" name="VolumetricFlowRate"
+                    placeholder="Volumetric Flow Rate in L/sec" value="1">
+                <input type="string" name="Order" placeholder="Order w.r.t. A and B (e.g. [A]&#x1D43;[B]&#x1D47;)"value="1, 1">
+                <input type="submit" value="Find">
+            </form>
+        </section>
+        <div id="mBox">
+            <div id="message" class="bulleted"></div>
+        </div>
+        <div id="plots">
+            <div id="graphs">
+                <div class="graph" id="plot1"></div>
+                <div class="graph" id="plot2"></div>
+                <div class="graph" id="plot3"></div>
+                <div class="graph" id="plot4"></div>
+                <div class="graph" id="plot5"></div>
+                <div class="graph" id="plot6"></div>
+                <div class="graph" id="plot7"></div>
+                <div class="graph" id="plot8"></div>
+                <div class="graph" id="plot9"></div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.7.0/math.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+
+</html>
+</div>

@@ -1,0 +1,914 @@
+oct1,1510
+
+from time import time_ns
+from math import sqrt,log
+from random import choice
+import numpy as np
+from helper import *
+from copy import deepcopy
+
+class MCTS:
+    
+    class Node:
+        def __init__(self,state:np.array,player_number:int,parent:'MCTS.Node'=None,parent_action:Tuple[int,int]=(-1,-1)) -> None:
+            self.state=deepcopy(state)
+            self.player_number=player_number
+            self.parent=parent
+            self.parent_action=parent_action
+            self.children=set()
+            self.n=0
+            self.t=0
+            self.n_rave=0
+            self.t_rave=0
+            self.virtual_connections=0
+            self.last_move=(0,0)
+            self.a=sqrt(2)
+            self.vc_beta=0.4
+            self.k=500.0
+        
+        def is_leaf(self):
+            return len(self.children)==0
+        
+        def is_unexplored(self):
+            return self.n==0
+
+    def __init__(self,state:np.array,player_number:int) -> None:
+        self.state=state
+        self.player_number=player_number
+        self.opp=3-self.player_number
+        self.root=self.Node(state,player_number)
+        self.prev=(-1,-1)
+        self.virtual_moves = [(-1, 1), (1, -1), (1, 2), (2, 1), (-1, -2), (-2, -1)]
+
+    def choose(self,state:np.array,it:int)->Tuple[int,int]:
+        test,act=self.one_move_lose()
+        if test: return act
+        
+        for iter in range(it):
+            actions_history=set()
+            self.search(self.root,deepcopy(state),actions_history)
+
+        self.prev=max(self.root.children,key=self.ucb).parent_action
+        return self.prev
+
+    def one_move_lose(self)->bool:
+        for a,b in get_valid_actions(self.state):
+            p=(a,b)
+            self.state[a][b]=self.player_number
+            if check_win(self.state,p,self.player_number)[0]:
+                self.state[a][b]=0
+                return (True,p)
+            
+            self.state[a][b]=self.opp
+            if check_win(self.state,p,self.opp)[0]:
+                self.state[a][b]=0
+                return (True,p)
+            
+            for a1,b1 in get_valid_actions(self.state):
+                self.state[a1][b1]=self.opp
+                if check_win(self.state,(a1,b1),self.opp)[0]:
+                    self.state[a][b]=0
+                    self.state[a1][b1]=0
+                    return (True,(a1,b1))
+                self.state[a1][b1]=0
+
+            self.state[a][b]=0
+        return (False,(-1,-1))
+ 
+    def ucb(self, node: Node) -> float:
+        if node.is_unexplored(): return float('inf')
+        else:
+            rave_alpha = node.k/(node.k+node.n) # RAVE constant is 1000
+            # rave_alpha = max(0, (1000 - node.n) / 1000)  # RAVE constant is 1000
+            uct_value = float(node.t) / node.n + node.a * sqrt(log(node.parent.n) / node.n)
+            amaf_value = (1-node.vc_beta)*(float(node.t_rave) / node.n_rave if node.n_rave > 0 else 0)+node.vc_beta*node.virtual_connections
+            return (1 - rave_alpha) * uct_value + rave_alpha * amaf_value
+
+    def search(self,node:Node,state:np.array,actions_history:set[tuple[int,int]]):
+        player,opp=node.player_number,3-node.player_number
+        outcome=0
+        if node.is_leaf() and node.is_unexplored():
+            p=player
+            prev=None
+            while(True):
+                next_moves=get_valid_actions(state)
+                if not next_moves:
+                    break
+                a,b=choice(next_moves)
+                state[a][b]=p
+                actions_history.add((a,b))
+                if check_win(state,(a,b),player)[0]:
+                    outcome=100
+                    break
+                elif check_win(state,(a,b),opp)[0]:
+                    outcome=-100
+                    break
+                p=3-p
+        
+        elif node.is_leaf():
+            for a,b in get_valid_actions(node.state,node.player_number):
+                child=self.Node(state,opp,node,(a,b))
+                child.state[a][b]=player
+                node.children.add(child)
+
+        if not node.is_leaf():
+            best=max(node.children,key=self.ucb)
+            a,b=best.parent_action
+            for move in self.virtual_moves:
+                a_next, b_next = a + move[0], b + move[1]
+                if 0 <= a_next < self.state.shape[0] and 0 <= b_next < self.state.shape[1]:
+                    if self.state[a_next][b_next] == self.player_number:
+                        node.virtual_connections += 100
+            state[a][b]=node.player_number
+            outcome=-self.search(best,state,actions_history)
+
+        node.n+=1
+        node.t+=outcome
+        for child in node.children:
+            if child.parent_action in actions_history:
+                child.n_rave+=1
+                child.t_rave-=outcome
+
+        return outcome
+
+class AIPlayer:
+
+    def __init__(self, player_number: int, timer):
+        #- Run `fetch_remaining_time(timer, player_number)` to fetch remaining time of a player
+        self.player_number = player_number
+        self.type = 'ai'
+        self.player_string = 'Player {}: ai'.format(player_number)
+        self.timer = timer
+
+    def get_move(self, state: np.array) -> Tuple[int, int]:
+        tree=MCTS(state,self.player_number)
+        return tree.choose(state,9000)
+
+
+
+
+oct2:4
+def search(self,node:Node,state:np.array,actions_history:set[tuple[int,int]]):
+        player,opp=node.player_number,3-node.player_number
+        outcome=0
+        if node.is_leaf() and node.is_unexplored():
+            p=player
+            prev=None
+            next_moves=set(get_valid_actions(state))
+            # node.n+=1
+            while True:
+                neighbours=get_neighbours(self.dim,prev) if prev else []
+                neighbours=[i for i in neighbours if i in next_moves]
+                if neighbours: move=choice(neighbours)
+                else:
+                    if not next_moves:
+                        # node.t=50
+                        return 50
+                    else: move=choice(list(next_moves))
+                next_moves.remove(move)
+                state[move[0]][move[1]]=p
+                actions_history.add(move)
+                if check_win(state,move,player)[0]:
+                    # node.t=100
+                    return 100
+                elif check_win(state,move,opp)[0]: return 0
+                p=3-p
+                prev=move
+                
+     
+        elif node.is_leaf():
+            for a,b in get_valid_actions(node.state):
+                child=self.Node(state,opp,node,(a,b))
+                child.state[a][b]=player
+                node.children[(a,b)]=child
+
+
+        best=max(node.children.values(),key=self.ucb)
+        a,b=best.parent_action
+
+        def virtual_points():
+            for a1,b1 in self.virtual_moves:
+                x,y = a+a1, b+b1
+                if 0 <= x < self.state.shape[0] and 0 <= y < self.state.shape[1] and self.state[x][y] == self.player_number:
+                    node.virtual_connections += 100
+        virtual_points()
+
+        state[a][b]=node.player_number
+        outcome=100-self.search(best,state,actions_history)
+
+        best.n+=1
+        best.t+=outcome
+        # for child in node.children:
+        #     if child.parent_action in actions_history:
+        #         child.n_rave+=1
+        #         child.t_rave=100-outcome
+
+        return outcome
+
+
+oct2:2145
+# import time
+# from math import sqrt,log
+# from random import choice
+# import numpy as np
+# from helper import *
+# from copy import deepcopy
+
+# class MCTS:
+    
+#     class Node:
+#         def __init__(self,state:np.array,player_number:int,parent:'MCTS.Node'=None,parent_action:Tuple[int,int]=(-1,-1)) -> None:
+#             self.state=deepcopy(state)
+#             self.player_number=player_number
+#             self.parent=parent
+#             self.parent_action=parent_action
+#             self.n=0
+#             self.t=0
+#             self.children=[]
+#             self.a=sqrt(2)
+        
+#         def is_leaf(self):
+#             return len(self.children)==0
+        
+#         def is_unexplored(self):
+#             return self.n==0
+        
+#     def __init__(self,state:np.array,player_number:int) -> None:
+#         self.state=state
+#         self.player_number=player_number
+#         self.opp=3-self.player_number
+#         self.root=self.Node(state,player_number)
+#         self.prev=(-1,-1)
+    
+#     def choose(self,state:np.array,it:int)->Tuple[int,int]:
+#         test,action=self.one_mover_test()
+#         if test: return action
+        
+#         for iter in range(it):
+#             self.search(self.root,deepcopy(state))
+
+#         self.prev=max(self.root.children,key=self.ucb).parent_action
+#         return self.prev
+    
+#     def one_mover_test(self)->bool:
+#         for a,b in get_valid_actions(self.state):
+
+#             self.state[a][b]=self.player_number
+#             if check_win(self.state,(a,b),self.player_number)[0]:
+#                 self.state[a][b]=0
+#                 return (True,(a,b))
+            
+#             self.state[a][b]=self.opp
+#             if check_win(self.state,(a,b),self.opp)[0]:
+#                 self.state[a][b]=0
+#                 return (True,(a,b))
+            
+#             for a1,b1 in get_valid_actions(self.state):
+#                 if check_win(self.state,(a1,b1),self.opp)[0]:
+#                     self.state[a][b]=0
+#                     self.state[a1][b1]=0
+#                     return (True,(a1,b1))
+#                 self.state[a1][b1]=0
+
+#             self.state[a][b]=0
+#         return (False,(-1,-1))
+            
+#     def ucb(self,node:Node)->float:
+#         return float('inf') if node.is_unexplored() else float(node.t)/node.n+node.a*sqrt(log(node.parent.n)/node.n)
+    
+#     # def rollout(self,node:Node)->None:
+#     #     path=self.select(node)
+#     #     reward=self.simulate(deepcopy(node))
+#     #     self.back_propogate(path,reward)
+
+#     # def select(self,node:Node)->list[Node]:
+#     #     path=[]
+#     #     while True:
+#     #         path.append(node)
+#     #         if node.is_leaf():
+#     #             if not node.is_unexplored():
+#     #                 for a,b in get_valid_actions(node.state,node.player_number):
+#     #                     child=self.Node(node.state,3-node.player_number,node,(a,b))
+#     #                     child.state[a][b]=node.player_number
+#     #                     node.children.append(child)
+#     #             if not node.is_leaf():
+#     #                 path.append(choice(node.children))
+#     #             return path
+
+#     #         else:
+#     #             node=max(node.children,key=self.ucb)
+    
+#     # def simulate(self,node:Node)->int:
+#     #     while True:
+#     #         next_moves=get_valid_actions(node.state,node.player_number)
+#     #         if not next_moves:
+#     #             return 0
+#     #         a,b=next_move=choice(next_moves)
+#     #         node.state[a][b]=node.player_number
+#     #         if check_win(node.state,next_move,node.player_number)[0]:
+#     #             return 1
+#     #         elif check_win(node.state,next_move,3-node.player_number)[0]:
+#     #             return -1
+#     #         node.player_number=3-node.player_number
+    
+#     # def back_propogate(self,path:list[Node],reward:int)->None:
+#     #     for node in reversed(path):
+#     #         node.t+=reward
+#     #         node.n+=1
+    
+#     def search(self,node:Node,state:np.array):
+#         player,opp=node.player_number,3-node.player_number
+#         outcome=0
+#         if node.is_leaf() and node.is_unexplored():
+#             p=player
+#             while(True):
+#                 next_moves=get_valid_actions(state)
+#                 if not next_moves:
+#                     break
+#                 a,b=choice(next_moves)
+#                 state[a][b]=p
+#                 if check_win(state,(a,b),player)[0]:
+#                     outcome=1
+#                     break
+#                 elif check_win(state,(a,b),opp)[0]:
+#                     outcome=-1
+#                     break
+#                 p=3-p
+
+#         elif node.is_leaf():
+#             for a,b in get_valid_actions(state):
+#                 child=self.Node(state,opp,node,(a,b))
+#                 child.state[a][b]=player
+#                 node.children.append(child)
+
+#         if not node.is_leaf():
+#             best=max(node.children,key=self.ucb)
+#             a,b=best.parent_action
+#             state[a][b]=node.player_number
+#             outcome=-self.search(best,state)
+
+#         node.n+=1
+#         node.t+=outcome
+#         return outcome
+    
+
+
+
+# class AIPlayer:
+
+#     def __init__(self, player_number: int, timer):
+#         """
+#         Intitialize the AIPlayer Agent
+
+#         # Parameters
+#         `player_number (int)`: Current player number, num==1 starts the game
+        
+#         `timer: Timer`
+#             - a Timer object that can be used to fetch the remaining time for any player
+#             - Run `fetch_remaining_time(timer, player_number)` to fetch remaining time of a player
+#         """
+#         self.player_number = player_number
+#         self.type = 'ai'
+#         self.player_string = 'Player {}: ai2'.format(player_number)
+#         self.timer = timer
+
+#     def get_move(self, state: np.array) -> Tuple[int, int]:
+#         tree=MCTS(state,self.player_number)
+#         return tree.choose(state,1500)
+
+from time import time_ns
+from math import sqrt, log
+from random import choice
+import numpy as np
+from helper import *
+from copy import deepcopy
+
+class MCTS:
+    
+    class Node:
+        def __init__(self, state: np.array, player_number: int, parent: 'MCTS.Node' = None, parent_action: Tuple[int, int] = (-1, -1)) -> None:
+            self.state = deepcopy(state)
+            self.player_number = player_number
+            self.parent = parent
+            self.parent_action = parent_action
+            self.children = set()
+            self.n = 0
+            self.t = 0
+            self.n_rave = 0
+            self.t_rave = 0
+            self.virtual_connections = 0
+            self.a = sqrt(2)
+            self.vc_beta = 0.4
+            self.k = 500.0
+        
+        def is_leaf(self):
+            return len(self.children) == 0
+        
+        def is_unexplored(self):
+            return self.n == 0
+        
+    def __init__(self, state: np.array, player_number: int) -> None:
+        self.state = state
+        self.player_number = player_number
+        self.opp = 3 - self.player_number
+        self.root = self.Node(state, player_number)
+        self.prev = (-1, -1)
+        self.virtual_moves = [(-1, 1), (1, -1), (1, 2), (2, 1), (-1, -2), (-2, -1)]
+    
+    def choose(self, state: np.array, it: int) -> Tuple[int, int]:
+        test, act = self.one_move_lose()
+        if test: return act
+        
+        for iter in range(it):
+            actions_history = set()
+            self.search(self.root, deepcopy(state), actions_history)
+
+        self.prev = max(self.root.children, key=self.ucb).parent_action
+        return self.prev
+    
+    def one_move_lose(self) -> bool:
+        for a, b in get_valid_actions(self.state):
+
+            self.state[a][b] = self.player_number
+            if check_win(self.state, (a, b), self.player_number)[0]:
+                self.state[a][b] = 0
+                return (True, (a, b))
+            
+            self.state[a][b] = self.opp
+            if check_win(self.state, (a, b), self.opp)[0]:
+                self.state[a][b] = 0
+                return (True, (a, b))
+            
+            for a1, b1 in get_valid_actions(self.state):
+                self.state[a1][b1]=self.opp
+                if check_win(self.state, (a1, b1), self.opp)[0]:
+                    self.state[a][b] = 0
+                    self.state[a1][b1] = 0
+                    return (True, (a1, b1))
+                self.state[a1][b1] = 0
+
+            self.state[a][b] = 0
+        return (False, (-1, -1))
+            
+    def ucb(self, node: Node) -> float:
+        if node.is_unexplored(): return float('inf')
+        else:
+            rave_alpha = node.k / (node.k + node.n)
+            uct_value = float(node.t) / node.n + node.a * sqrt(log(node.parent.n) / node.n)
+            amaf_value = (1 - node.vc_beta) * (float(node.t_rave) / node.n_rave if node.n_rave > 0 else 0) + node.vc_beta * node.virtual_connections
+            return (1 - rave_alpha) * uct_value + rave_alpha * amaf_value
+
+    def search(self, node: Node, state: np.array, actions_history: set[tuple[int, int]]):
+        player, opp = node.player_number, 3 - node.player_number
+        outcome = 0
+        if node.is_leaf() and node.is_unexplored():
+            p = player
+            while True:
+                next_moves = get_valid_actions(state)
+                if not next_moves:
+                    break
+                a, b = choice(next_moves)
+                state[a][b] = p
+                actions_history.add((a, b))
+                if check_win(state, (a, b), player)[0]:
+                    outcome = 100
+                    break
+                elif check_win(state, (a, b), opp)[0]:
+                    outcome = -100
+                    break
+                p = 3 - p
+        
+        elif node.is_leaf():
+            for a, b in get_valid_actions(node.state, node.player_number):
+                child = self.Node(state, opp, node, (a, b))
+                child.state[a][b] = player
+                node.children.add(child)
+
+        if not node.is_leaf():
+            best = max(node.children, key=self.ucb)
+            a, b = best.parent_action
+            for move in self.virtual_moves:
+                a_next, b_next = a + move[0], b + move[1]
+                if 0 <= a_next < self.state.shape[0] and 0 <= b_next < self.state.shape[1]:
+                    if self.state[a_next][b_next] == self.player_number:
+                        node.virtual_connections += 100
+            state[a][b] = node.player_number
+            outcome = -self.search(best, state, actions_history)
+
+        node.n += 1
+        node.t += outcome
+        for child in node.children:
+            if child.parent_action in actions_history:
+                child.n_rave += 1
+                child.t_rave -= outcome
+
+        return outcome
+    
+    def update_root(self, opponent_move: Tuple[int, int]):
+        for child in self.root.children:
+            if child.parent_action == opponent_move:
+                self.root = child
+                self.root.parent = None
+                return
+        # If the opponent's move is not found, create a new root node
+        new_state = deepcopy(self.state)
+        new_state[opponent_move[0]][opponent_move[1]] = self.opp
+        self.root = self.Node(new_state, self.player_number)
+
+class AIPlayer:
+
+    def __init__(self, player_number: int, timer):
+        self.player_number = player_number
+        self.type = 'ai'
+        self.player_string = 'Player {}: ai2'.format(player_number)
+        self.timer = timer
+        self.mcts = None
+
+    def get_move(self, state: np.array) -> Tuple[int, int]:
+        if self.mcts is None:
+            self.mcts = MCTS(state, self.player_number)
+        else:
+            opponent_move = self.find_opponent_move(state)
+            self.mcts.update_root(opponent_move)
+        return self.mcts.choose(state, 7000)
+
+    def find_opponent_move(self, state: np.array) -> Tuple[int, int]:
+        for i,j in get_valid_actions(state):
+                if self.mcts.state[i][j] != state[i][j]:
+                    return (i, j)
+        return (-1, -1)
+
+
+COMPLETE CODE:
+
+from time import time
+from math import sqrt,log
+from random import choice,shuffle,randint
+import numpy as np
+from helper import *
+from copy import deepcopy
+
+class MCTS:
+    
+    class Node:
+        def __init__(self,state:np.array,player_number:int,parent:'MCTS.Node'=None,parent_action:Tuple[int,int]=(-1,-1)) -> None:
+            self.state=deepcopy(state)
+            self.player_number=player_number
+            self.parent=parent
+            self.parent_action=parent_action
+            self.children={}
+            self.n=0
+            self.t=0
+            self.n_rave=0
+            self.t_rave=0
+            self.virtual_connections=0
+            self.last_move=(0,0)
+        
+        def is_leaf(self):
+            return len(self.children)==0
+        
+        def is_unexplored(self):
+            return self.n==0
+
+    class UnionFind:
+        def __init__(self,n:int) -> None:
+            self.rank=[1 for i in range(n)]
+            self.parent=[i for i in range(n)]
+        
+        def find(self,i:int) -> int:
+            while i!=self.parent[i]:
+                self.parent[i]=self.parent[self.parent[i]]
+                i=self.parent[i]
+            return i
+        
+        def union(self,i:int,j:int) -> bool:
+        # return if two nodes are in different SCC, and merges them
+            i,j=self.find(i),self.find(j)
+            if i!=j:
+                if self.rank[i]>=self.rank[j]:
+                    self.parent[j]=i
+                    self.rank[i]+=self.rank[j]
+                    return self.rank[i]
+                else:
+                    self.parent[i]=j
+                    self.rank[j]+=self.rank[i]
+                    return self.rank[j]
+            else: return -1
+
+    def __init__(self,state:np.array,player_number:int,p1:list[list[list[tuple[int, int]]]],try_s:int,confidence:float) -> None:
+        self.state=state
+        self.dim=len(state)
+        self.player_number=player_number
+        self.opp=3-self.player_number
+        self.root=self.Node(state,player_number)
+        for move in get_valid_actions(state):
+            child=self.Node(state,self.opp,self.root,move)
+            child.state[move[0]][move[1]]=self.player_number
+            self.root.children[move]=child
+        self.prev=(-1,-1)
+        self.gorandom=try_s<0
+        self.confidence=confidence
+        self.p1=p1
+        self.a=sqrt(2)
+        self.vrt=0.05
+        self.k=1000.0
+        self.boundary=get_all_corners(self.dim)
+        for i in get_all_edges(self.dim):
+            self.boundary+=i
+  
+    def choose(self,state:np.array,it:int)->Tuple[int,int]:
+
+        test,act=self.one_move_lose()
+        if test: return act
+        if not self.gorandom:
+            s_move=self.strat()
+            if not self.gorandom: return s_move
+        avg=0.0
+        for self.iter in range(it):
+            avg-=time()
+            self.iteration()
+            avg+=time()
+
+        # chilled,val=None,(-float('inf'),0,0,0,0)
+        # for u in self.root.children.values():
+        #     t=self.pick(u)
+        #     print(f'{t[0]:.2f}',end=' ')
+        #     if t[0]>val[0]:
+        #         chilled=u
+        #         val=t
+
+        # x=chilled.parent_action
+        # self.pick(chilled,True)
+        x=max(self.root.children.values(),key=self.pick).parent_action
+        print(f'\nAI moved {x}')
+        # print(f'move:{x}\ntotal time:{avg}, avg time per rollout:{avg/it}')
+        # print(f'\tucb: {val[1]:.2f}\n\tlocal pieces: {val[2]}\n\tgrouping done: {val[3]}\n\tconnection to edges:{val[4]}')
+        return x
+
+    def strat(self)->Tuple[int,int]:
+        if self.gorandom: return (-1,-1)
+        pieces=set(get_valid_actions(self.state))
+        while self.p1:
+            line=self.p1[-1]
+            if not line: 
+                self.p1.pop()
+                continue
+            ok=True
+            for block in line:
+                for pos in block[:]:
+                    if pos not in pieces and self.state[pos[0]][pos[1]]!=self.player_number:
+                        block.remove(pos)
+                if not block:
+                    self.p1.pop()
+                    ok=False
+                    shuffle(self.p1)
+                    break
+            if ok:
+                shuffle(line)
+                for x in line:
+                    if len(x)==1:
+                        line.remove(x)
+                        return x[0]
+                return line.pop()[0]
+
+        self.gorandom=True
+        return (-1,-1)
+
+    def one_move_lose(self)->bool:
+        for a,b in get_valid_actions(self.state):
+            p=(a,b)
+            self.state[a][b]=self.player_number
+            if check_win(self.state,p,self.player_number)[0]:
+                self.state[a][b]=0
+                return (True,p)
+            
+            self.state[a][b]=self.opp
+            if check_win(self.state,p,self.opp)[0]:
+                self.state[a][b]=0
+                return (True,p)
+            
+            # for a1,b1 in get_valid_actions(self.state):
+            #     self.state[a1][b1]=self.opp
+            #     if check_win(self.state,(a1,b1),self.opp)[0]:
+            #         self.state[a][b]=0
+            #         self.state[a1][b1]=0
+            #         return (True,(a1,b1))
+            #     self.state[a1][b1]=0
+
+            self.state[a][b]=0
+        return (False,(-1,-1))
+    
+    def ucb(self,node:Node)->float:
+        if node.is_unexplored(): return float('inf')
+        else:
+            alpha = self.k/(self.k+node.n)
+            # alpha = 0
+            UCT = float(node.t)/float(node.n)+self.a*sqrt(log(node.parent.n)/node.n)
+            AMAF= float(node.t_rave) / float(node.n_rave) if node.n_rave!=0 else 0
+            return (1 - alpha) * UCT + alpha * AMAF
+
+    def pick(self,node:Node,p=False)->tuple:
+        def edging()->int:
+            board= (node.state==self.player_number)
+            move=node.parent_action
+            group=set(bfs_reachable(board,move))
+            bonus=0
+
+            for edge_number in range(6):
+                for vertex in get_vertices_on_edge(edge_number,self.dim):
+                    if vertex in group:
+                        bonus+=1
+                        break
+            
+            for corner_number in range(6):
+                if get_vetex_at_corner(corner_number,self.dim) in group:
+                    bonus+=1
+
+
+            return bonus
+
+        def connectedness()->int:
+            n=len(node.state)
+            dsu=self.UnionFind(n*n)
+            x,y=node.parent_action
+            node.state[x][y]=0
+            for i in range(n):
+                for j in range(n):
+                    if self.state[i][j]==self.player_number:
+                        for a,b in get_neighbours(self.dim,(i,j)):
+                            if node.state[a][b]==self.player_number:
+                                dsu.union(n*i+j,n*a+b)
+            
+            nebor={}
+            for u,v in get_neighbours(self.dim,(x,y)):
+                if node.state[u][v]==self.player_number:
+                    nebor[dsu.parent[u*n+v]]=dsu.rank[dsu.find(u*n+v)]
+            node.state[x][y]=self.player_number
+            if p:print(nebor.values())
+            return sum(nebor.values()) if len(nebor)>1 else 0
+
+        def locality()->int:
+            a, b = node.parent_action
+            bonus=0
+            for x,y in get_neighbours(self.dim,(a,b)):
+                if node.state[x][y]==self.player_number:
+                    bonus+=1
+
+            def add(s1,s2)->Tuple[int,int]:
+                dx1,dy1=move_coordinates(s1,b-self.dim//2)
+                a1,b1=a+dx1,b+dy1
+                dx2,dy2=move_coordinates(s2,b1-self.dim//2)
+                a2,b2=a1+dx2,b1+dy2
+                return (a2,b2)
+            
+            second_neighbors=[add('up','up'),add('down','down'),add('top-right','top-right'),add('top-left','top-left'),add('bottom-left','bottom-left'),add('bottom-right','bottom-right')]
+
+            virtual_moves=[add('top-left','up'),add('top-right','up'),add('top-right','bottom-right'),add('top-left','bottom-left'),add('down','bottom-left'),add('down','bottom-right')]
+
+            for x,y in second_neighbors:
+                if 0 <= x < self.state.shape[0] and 0 <= y < self.state.shape[1]:
+                    if self.state[x][y]==self.player_number:
+                        bonus+= 2
+                    
+            for x,y in virtual_moves:
+                if 0 <= x < self.state.shape[0] and 0 <= y < self.state.shape[1]:
+                    if self.state[x][y]==self.player_number:
+                        bonus+= 3
+                    
+            return bonus
+        
+        ucb=self.ucb(node)
+        local=locality()
+        group=connectedness()
+        connection=edging()
+        if local+group+connection==0:ucb/=2
+        return (self.confidence*ucb+0.5*local+0.2*group+0.3*connection),ucb,local,group,connection
+
+    def traversal(self)->Node:
+        current=self.root
+        while not current.is_leaf():
+            current=max(current.children.values(),key=self.ucb)
+        return current
+
+    def expansion(self,node:Node)->Node:
+        for a,b in get_valid_actions(node.state):
+            child=self.Node(node.state,3-node.player_number,node,(a,b))
+            child.state[a][b]=node.player_number
+            node.children[(a,b)]=child
+        return choice(list(node.children.values())) if node.children else node
+
+    def rollout(self,state:np.array,player:int) -> tuple:
+    # return the tuple outcome,black_rave,white_rave
+        p,opp=player,3-player
+        prev=None
+        black_rave=[]
+        white_rave=[]
+        next_moves=get_valid_actions(state)
+        # next_moves=set(get_valid_actions(state))
+        while True:
+
+            if not next_moves: return 50,black_rave,white_rave
+            swap_ind=randint(0,len(next_moves)-1)
+            next_moves[-1],next_moves[swap_ind]=next_moves[swap_ind],next_moves[-1]
+            a,b=next_moves.pop()
+            state[a][b]=p
+            if p==player: white_rave.append((a,b))
+            else: black_rave.append((a,b))
+            if check_win(state,(a,b),player)[0]: return 100,black_rave,white_rave
+            elif check_win(state,(a,b),opp)[0]: return 0,black_rave,white_rave
+            p=3-p
+
+            # neighbours=get_neighbours(self.dim,prev) if prev else []
+            # neighbours=[i for i in neighbours if i in next_moves]
+            # if neighbours: move=choice(neighbours)
+            # else:
+            #     if not next_moves: return 0,black_rave,white_rave
+            #     else: move=choice(list(next_moves))
+            # next_moves.remove(move)
+            # a,b=move
+            # state[a][b]=p
+            # if p==self.player_number: white_rave.append(move)
+            # else: black_rave.append(move)
+            # if check_win(state,move,player)[0]: return 100,black_rave,white_rave
+            # elif check_win(state,move,opp)[0]: return -100,black_rave,white_rave
+            # p=3-p
+            # prev=move
+    
+    def back_propogate(self,node:Node,player:int,outcome:int,black_rave:tuple,white_rave:tuple)->None:
+        while node:
+            if self.player_number==node.player_number:
+                for point in white_rave:
+                    if point in node.children:
+                        node.children[point].n_rave+=1
+                        node.children[point].t_rave+=-outcome
+            else:
+                for point in black_rave:
+                    if point in node.children:
+                        node.children[point].n_rave+=1
+                        node.children[point].t_rave+=-outcome
+            node.n+=1
+            node.t+=outcome
+            outcome=-outcome
+            node=node.parent
+
+    def iteration(self)->None:
+        # node=self.root
+        selected=self.traversal()
+        if not selected.is_unexplored():
+            selected=self.expansion(selected)
+        outcome,black_rave,white_rave=self.rollout(deepcopy(selected.state),selected.player_number)
+        self.back_propogate(selected,self.root.player_number,outcome,black_rave,white_rave)
+        None
+
+class AIPlayer:
+
+    def __init__(self, player_number: int, timer):
+        #- Run `fetch_remaining_time(timer, player_number)` to fetch remaining time of a player
+        self.player_number = player_number
+        self.type = 'ai'
+        self.player_string = 'Player {}: ai2'.format(player_number)
+        self.timer = timer
+        self.try_s=4
+        self.confidence=0.5
+        self.starters={
+            3:[],
+            4:[
+                [[(0,0)],[(1,2)],[(1,4)],[(0,6)],[(0,1),(1,1)],[(1,3),(2,3)],[(0,5),(1,5)]],
+                [[(0,3)],[(1,4)],[(2,5)],[(3,6)],[(1,3),(0,4)],[(2,4),(1,5)],[(3,5),(2,6)]],
+                [[(0,6)],[(2,5)],[(4,4)],[(6,3)],[(1,5),(1,6)],[(3,4),(3,5)],[(5,3),(5,4)]],
+                [[(3,6)],[(4,4)],[(4,2)],[(3,0)],[(3,5),(4,5)],[(4,3),(5,3)],[(3,1),(4,1)]],
+                [[(6,3)],[(4,2)],[(2,1)],[(0,0)],[(5,2),(5,3)],[(3,1),(3,2)],[(1,0),(1,1)]],
+                [[(3,0)],[(2,1)],[(1,2)],[(0,3)],[(2,0),(3,1)],[(1,1),(2,2)],[(0,2),(1,3)]],
+            ],
+            5:[
+                [[(0,0)],[(1,2)],[(2,4)],[(1,6)],[(0,8)],[(0,1),(1,1)],[(1,3),(2,3)],[(1,5),(2,5)],[(0,7),(1,7)]],
+                [[(0,4)],[(1,5)],[(2,6)],[(3,7)],[(4,8)],[(0,5),(1,4)],[(2,5),(1,6)],[(3,6),(2,7)],[(4,7),(3,8)]],
+                [[(0,8)],[(2,7)],[(4,6)],[(6,5)],[(8,4)],[(1,7),(1,8)],[(3,6),(3,7)],[(5,5),(5,6)],[(7,4),(7,5)]],
+                [[(4,8)],[(5,6)],[(6,4)],[(5,2)],[(4,0)],[(4,7),(5,7)],[(5,5),(6,5)],[(5,3),(6,3)],[(4,1),(5,1)]],
+                [[(8,4)],[(6,3)],[(4,2)],[(2,1)],[(0,0)],[(1,0),(1,1)],[(3,1),(3,2)],[(5,2),(5,3)],[(7,3),(7,4)]],
+                [[(4,0)],[(3,1)],[(2,2)],[(1,3)],[(0,4)],[(3,0),(4,1)],[(2,1),(3,2)],[(1,2),(2,3)],[(0,3),(1,4)]],
+            ],
+            6:[
+                [[(0,0)],[(1,2)],[(0,3)],[(0,4)],[(0,5)],[(0,1),(1,1)],[(0,2),(1,3)]],
+                [[(0,0)],[(1,2)],[(0,3)],[(1,5)],[(0,5)],[(0,1),(1,1)],[(0,2),(1,3)],[(0,4),(1,4)]],
+                [[(0,5)],[(1,6)],[(0,8)],[(0,9)],[(0,10)],[(0,6),(1,5)],[(0,7),(1,7)]],
+                [[(0,5)],[(1,6)],[(0,8)],[(1,9)],[(0,10)],[(0,6),(1,5)],[(0,7),(1,7)],[(1,8),(0,9)]],
+                [[(0,10)],[(2,9)],[(3,10)],[(4,10)],[(5,10)],[(1,9),(1,10)],[(3,9),(2,10)]],
+                [[(0,10)],[(2,9)],[(3,10)],[(5,9)],[(5,10)],[(1,9),(1,10)],[(3,9),(2,10)],[(4,9),(4,10)]],
+                [[(5,10)],[(6,8)],[(8,7)],[(9,6)],[(10,5)],[(5,9),(6,9)],[(7,7),(7,8)]],
+                [[(5,10)],[(6,8)],[(8,7)],[(9,5)],[(10,5)],[(5,9),(6,9)],[(7,7),(7,8)],[(8,6),(9,6)]],
+                [[(10,5)],[(8,4)],[(7,2)],[(6,1)],[(5,0)],[(7,3),(8,3)],[(9,4),(9,5)]],
+                [[(10,5)],[(8,4)],[(7,2)],[(5,1)],[(5,0)],[(7,3),(8,3)],[(9,4),(9,5)],[(6,1),(6,2)]],
+                [[(5,0)],[(4,1)],[(2,0)],[(1,0)],[(0,0)],[(3,0),(3,1)],[(4,0),(4,1)]],
+                [[(5,0)],[(4,1)],[(2,0)],[(1,1)],[(0,0)],[(3,0),(3,1)],[(4,0),(4,1)],[(1,0),(1,1)]]
+            ],
+            8:[]
+        }
+        for matrix in self.starters.values(): shuffle(matrix)
+    def get_move(self, state: np.array) -> Tuple[int, int]:
+        self.dim=int((1+len(state))/2)
+        self.try_s-=1
+        self.confidence+=0.05
+        tree=MCTS(state,self.player_number,self.starters[self.dim],self.try_s,self.confidence)
+        iters=int(fetch_remaining_time(self.timer,self.player_number)*7.5)
+        return tree.choose(state,iters)

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph of y = e^x</title>
+    <!-- Include Plotly.js library -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        #plot {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="plot"></div>
+
+<script>
+    // Define the function y = e^x
+    function exponentialFunction(x) {
+        return Math.exp(x);
+    }
+
+    // Generate data points for the function y = e^x
+    function generateDataPoints(minX, maxX, numPoints) {
+        var data = [];
+        var step = (maxX - minX) / (numPoints - 1);
+        for (var x = minX; x <= maxX; x += step) {
+            var y = exponentialFunction(x);
+            data.push({ x: x, y: y });
+        }
+        return data;
+    }
+
+    // Parameters for the function y = e^x
+    var minX = -5;
+    var maxX = 5;
+    var numPoints = 100;
+
+    // Generate data points
+    var data = generateDataPoints(minX, maxX, numPoints);
+
+    // Plot the graph using Plotly.js
+    Plotly.newPlot('plot', [{
+        x: data.map(point => point.x),
+        y: data.map(point => point.y),
+        type: 'scatter',
+        mode: 'lines',
+        line: {
+            color: 'blue'
+        }
+    }], {
+        title: 'Graph of y = e^x',
+        xaxis: {
+            title: 'x'
+        },
+        yaxis: {
+            title: 'y'
+        }
+    });
+</script>
+
+</body>
+</html>

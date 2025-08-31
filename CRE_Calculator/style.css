@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+body {
+    background-color: #23233f;
+
+}
+
+#main {
+    background-color: #e44f2d;
+}
+
+header {
+    height: 110px;
+    width: 100%;
+    background-color: #23233f;
+    color: antiquewhite;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#selectBox {
+    /* margin-bottom: 10px; */
+    width: 180px;
+    border: none;
+    height: 30px;
+    border-radius: 10px;
+    /* padding: 5px; */
+    background-color: #FAE8E0;
+    cursor: pointer;
+
+}
+
+#instruction {
+    height: 30px;
+    width: 100%;
+    border: 1px solid #333;
+    margin: 10px 0;
+    color: #9fe218;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reactionConditions {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    min-width: 600px;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    border: 1px solid #333;
+    input,
+    select {
+        /* margin: 5px 10px; */
+        width: 45%;
+        height: 30px;
+        border-radius: 10px;
+        color: black;
+        padding: 5px;
+        background-color: #FAE8E0;
+
+    }
+}
+
+input::placeholder {
+    color: black;
+
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    /* margin: 0;  */
+}
+
+#conditions {
+    width: 30%;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    gap: 25px;
+    select {
+        width: 60%;
+        background-color: #FAE8E0;
+    }
+}
+ 
+.condition {
+    width: 60%;
+    height: 30px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+#mBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: small;
+    /* display: default; */
+}
+
+#message {
+    width: 73.5%;
+    height: 150px;
+    /* margin-left: 10px; */
+    border: 1px solid #333;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: 700;
+    background-color: #9fe218;
+    border-radius: 10px;
+}
+
+#plots {
+    border: 2px solid #9fe218;
+    /* width: 80%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#graphs{
+    border: 1px solid #333;
+    width: 1300px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.graph {
+    width: 300px;
+    height: 300px;
+    aspect-ratio: 1/1;
+    margin: 10px;;
+    border: 2px solid #9fe218;
+}
+
+/*
+#FFFFFF
+#B3A394
+#F87060
+#102542
+*/

@@ -1,0 +1,606 @@
+Fugacity coefficient for CO2: 0.710282
+Henry's constant for CO2: 3587.45 Bar
+Equilibrium constant for H2O: 0.0117735
+Vapor phase mole fraction of H2O Y_H2O: 0.011583
+Liquid phase mole fraction of CO2 X_CO2: 0.0161787
+
+Fugacity coefficient for CO2: 0.64887
+Henry's constant for CO2: 3674.02 Bar
+Equilibrium constant for H2O: 0.00948738
+Vapor phase mole fraction of H2O Y_H2O: 0.0093171
+Liquid phase mole fraction of CO2 X_CO2: 0.0179496
+
+Fugacity coefficient for CO2: 0.555193
+Henry's constant for CO2: 3829.94 Bar
+Equilibrium constant for H2O: 0.00708158
+Vapor phase mole fraction of H2O Y_H2O: 0.00694147
+Liquid phase mole fraction of CO2 X_CO2: 0.0197866
+
+Fugacity coefficient for CO2: 0.489305
+Henry's constant for CO2: 3986.95 Bar
+Equilibrium constant for H2O: 0.00568243
+Vapor phase mole fraction of H2O Y_H2O: 0.00556362
+Liquid phase mole fraction of CO2 X_CO2: 0.0209083
+
+Fugacity coefficient for CO2: 0.458792
+Henry's constant for CO2: 4086.73 Bar
+Equilibrium constant for H2O: 0.00506468
+Vapor phase mole fraction of H2O Y_H2O: 0.00495592
+Liquid phase mole fraction of CO2 X_CO2: 0.0214745
+
+Fugacity coefficient for CO2: 0.875604
+Henry's constant for CO2: 4303.53 Bar
+Equilibrium constant for H2O: 0.0236966
+Vapor phase mole fraction of H2O Y_H2O: 0.0235044
+Liquid phase mole fraction of CO2 X_CO2: 0.00811769
+
+Fugacity coefficient for CO2: 0.76174
+Henry's constant for CO2: 4516.04 Bar
+Equilibrium constant for H2O: 0.0117013
+Vapor phase mole fraction of H2O Y_H2O: 0.01154
+Liquid phase mole fraction of CO2 X_CO2: 0.0137847
+
+Fugacity coefficient for CO2: 0.712475
+Henry's constant for CO2: 4620.39 Bar
+Equilibrium constant for H2O: 0.0094279
+Vapor phase mole fraction of H2O Y_H2O: 0.00928014
+Liquid phase mole fraction of CO2 X_CO2: 0.0156738
+
+Fugacity coefficient for CO2: 0.635549
+Henry's constant for CO2: 4808.01 Bar
+Equilibrium constant for H2O: 0.00703543
+Vapor phase mole fraction of H2O Y_H2O: 0.00690848
+Liquid phase mole fraction of CO2 X_CO2: 0.0180442
+
+Fugacity coefficient for CO2: 0.59806
+Henry's constant for CO2: 4918.15 Bar
+Equilibrium constant for H2O: 0.00614438
+Vapor phase mole fraction of H2O Y_H2O: 0.00602751
+Liquid phase mole fraction of CO2 X_CO2: 0.0190222
+
+Fugacity coefficient for CO2: 0.57486
+Henry's constant for CO2: 4996.54 Bar
+Equilibrium constant for H2O: 0.00564402
+Vapor phase mole fraction of H2O Y_H2O: 0.00553339
+Liquid phase mole fraction of CO2 X_CO2: 0.019602
+
+Fugacity coefficient for CO2: 0.520035
+Henry's constant for CO2: 5232.36 Bar
+Equilibrium constant for H2O: 0.00455732
+Vapor phase mole fraction of H2O Y_H2O: 0.00446165
+Liquid phase mole fraction of CO2 X_CO2: 0.0209928
+
+Fugacity coefficient for CO2: 0.732015
+Henry's constant for CO2: 4577.88 Bar
+Equilibrium constant for H2O: 0.0102331
+Vapor phase mole fraction of H2O Y_H2O: 0.0100854
+Liquid phase mole fraction of CO2 X_CO2: 0.0144368
+
+Fugacity coefficient for CO2: 0.721356
+Henry's constant for CO2: 4605.82 Bar
+Equilibrium constant for H2O: 0.00976909
+Vapor phase mole fraction of H2O Y_H2O: 0.00962435
+Liquid phase mole fraction of CO2 X_CO2: 0.0148179
+
+Fugacity coefficient for CO2: 0.874978
+Henry's constant for CO2: 4313.28 Bar
+Equilibrium constant for H2O: 0.0235222
+Vapor phase mole fraction of H2O Y_H2O: 0.0233372
+Liquid phase mole fraction of CO2 X_CO2: 0.00786724
+
+Fugacity coefficient for CO2: 0.822198
+Henry's constant for CO2: 4408 Bar
+Equilibrium constant for H2O: 0.0161345
+Vapor phase mole fraction of H2O Y_H2O: 0.0159631
+Liquid phase mole fraction of CO2 X_CO2: 0.0106201
+
+Fugacity coefficient for CO2: 0.820839
+Henry's constant for CO2: 4410.53 Bar
+Equilibrium constant for H2O: 0.0160015
+Vapor phase mole fraction of H2O Y_H2O: 0.0158305
+Liquid phase mole fraction of CO2 X_CO2: 0.0106859
+
+Fugacity coefficient for CO2: 0.877675
+Henry's constant for CO2: 4312.94 Bar
+Equilibrium constant for H2O: 0.0240453
+Vapor phase mole fraction of H2O Y_H2O: 0.0238598
+Liquid phase mole fraction of CO2 X_CO2: 0.00771626
+
+Fugacity coefficient for CO2: 0.76905
+Henry's constant for CO2: 4515.49 Bar
+Equilibrium constant for H2O: 0.0120782
+Vapor phase mole fraction of H2O Y_H2O: 0.0119211
+Liquid phase mole fraction of CO2 X_CO2: 0.0130031
+
+Fugacity coefficient for CO2: 0.769233
+Henry's constant for CO2: 4524.55 Bar
+Equilibrium constant for H2O: 0.0120619
+Vapor phase mole fraction of H2O Y_H2O: 0.0119052
+Liquid phase mole fraction of CO2 X_CO2: 0.0129966
+
+Fugacity coefficient for CO2: 0.849514
+Henry's constant for CO2: 3411.48 Bar
+Equilibrium constant for H2O: 0.0238357
+Vapor phase mole fraction of H2O Y_H2O: 0.0236076
+Liquid phase mole fraction of CO2 X_CO2: 0.00957403
+
+Fugacity coefficient for CO2: 0.710282
+Henry's constant for CO2: 3587.45 Bar
+Equilibrium constant for H2O: 0.0117735
+Vapor phase mole fraction of H2O Y_H2O: 0.0115899
+Liquid phase mole fraction of CO2 X_CO2: 0.0155957
+
+Fugacity coefficient for CO2: 0.555193
+Henry's constant for CO2: 3829.94 Bar
+Equilibrium constant for H2O: 0.00708158
+Vapor phase mole fraction of H2O Y_H2O: 0.00694645
+Liquid phase mole fraction of CO2 X_CO2: 0.0190826
+
+Fugacity coefficient for CO2: 0.51362
+Henry's constant for CO2: 3921.63 Bar
+Equilibrium constant for H2O: 0.00618558
+Vapor phase mole fraction of H2O Y_H2O: 0.00606335
+Liquid phase mole fraction of CO2 X_CO2: 0.0197614
+
+Fugacity coefficient for CO2: 0.489305
+Henry's constant for CO2: 3986.95 Bar
+Equilibrium constant for H2O: 0.00568243
+Vapor phase mole fraction of H2O Y_H2O: 0.00556781
+Liquid phase mole fraction of CO2 X_CO2: 0.0201715
+
+Fugacity coefficient for CO2: 0.458792
+Henry's constant for CO2: 4086.73 Bar
+Equilibrium constant for H2O: 0.00506468
+Vapor phase mole fraction of H2O Y_H2O: 0.00495973
+Liquid phase mole fraction of CO2 X_CO2: 0.0207226
+
+Fugacity coefficient for CO2: 0.875604
+Henry's constant for CO2: 4303.53 Bar
+Equilibrium constant for H2O: 0.0236966
+Vapor phase mole fraction of H2O Y_H2O: 0.0235112
+Liquid phase mole fraction of CO2 X_CO2: 0.0078302
+
+Fugacity coefficient for CO2: 0.76174
+Henry's constant for CO2: 4516.04 Bar
+Equilibrium constant for H2O: 0.0117013
+Vapor phase mole fraction of H2O Y_H2O: 0.0115457
+Liquid phase mole fraction of CO2 X_CO2: 0.0132962
+
+Fugacity coefficient for CO2: 0.635549
+Henry's constant for CO2: 4808.01 Bar
+Equilibrium constant for H2O: 0.00703543
+Vapor phase mole fraction of H2O Y_H2O: 0.00691295
+Liquid phase mole fraction of CO2 X_CO2: 0.0174095
+
+Fugacity coefficient for CO2: 0.57486
+Henry's constant for CO2: 4996.54 Bar
+Equilibrium constant for H2O: 0.00564402
+Vapor phase mole fraction of H2O Y_H2O: 0.00553726
+Liquid phase mole fraction of CO2 X_CO2: 0.0189168
+
+Fugacity coefficient for CO2: 0.520035
+Henry's constant for CO2: 5232.36 Bar
+Equilibrium constant for H2O: 0.00455732
+Vapor phase mole fraction of H2O Y_H2O: 0.00446497
+Liquid phase mole fraction of CO2 X_CO2: 0.0202655
+
+Fugacity coefficient for CO2: 0.880218
+Henry's constant for CO2: 5082.78 Bar
+Equilibrium constant for H2O: 0.0199946
+Vapor phase mole fraction of H2O Y_H2O: 0.0198647
+Liquid phase mole fraction of CO2 X_CO2: 0.00649672
+
+Fugacity coefficient for CO2: 0.795947
+Henry's constant for CO2: 2968.67 Bar
+Equilibrium constant for H2O: 0.0191657
+Vapor phase mole fraction of H2O Y_H2O: 0.0189629
+Liquid phase mole fraction of CO2 X_CO2: 0.0105876
+
+Fugacity coefficient for CO2: 0.616978
+Henry's constant for CO2: 3153.9 Bar
+Equilibrium constant for H2O: 0.00974647
+Vapor phase mole fraction of H2O Y_H2O: 0.00959663
+Liquid phase mole fraction of CO2 X_CO2: 0.0153744
+
+Fugacity coefficient for CO2: 0.493097
+Henry's constant for CO2: 3325.76 Bar
+Equilibrium constant for H2O: 0.00679964
+Vapor phase mole fraction of H2O Y_H2O: 0.00668534
+Liquid phase mole fraction of CO2 X_CO2: 0.0168107
+
+Fugacity coefficient for CO2: 0.799919
+Henry's constant for CO2: 2969.86 Bar
+Equilibrium constant for H2O: 0.0195491
+Vapor phase mole fraction of H2O Y_H2O: 0.0193454
+Liquid phase mole fraction of CO2 X_CO2: 0.0104237
+
+Fugacity coefficient for CO2: 0.618469
+Henry's constant for CO2: 3157.84 Bar
+Equilibrium constant for H2O: 0.00977573
+Vapor phase mole fraction of H2O Y_H2O: 0.00962573
+Liquid phase mole fraction of CO2 X_CO2: 0.0153459
+
+Fugacity coefficient for CO2: 0.480434
+Henry's constant for CO2: 3353.6 Bar
+Equilibrium constant for H2O: 0.00651886
+Vapor phase mole fraction of H2O Y_H2O: 0.00640833
+Liquid phase mole fraction of CO2 X_CO2: 0.0169569
+
+Fugacity coefficient for CO2: 0.480688
+Henry's constant for CO2: 3356.28 Bar
+Equilibrium constant for H2O: 0.00651887
+Vapor phase mole fraction of H2O Y_H2O: 0.00640836
+Liquid phase mole fraction of CO2 X_CO2: 0.0169525
+
+Fugacity coefficient for CO2: 0.404326
+Henry's constant for CO2: 3565.7 Bar
+Equilibrium constant for H2O: 0.00489112
+Vapor phase mole fraction of H2O Y_H2O: 0.00480306
+Liquid phase mole fraction of CO2 X_CO2: 0.0180034
+
+Fugacity coefficient for CO2: 0.328622
+Henry's constant for CO2: 4019.6 Bar
+Equilibrium constant for H2O: 0.0032647
+Vapor phase mole fraction of H2O Y_H2O: 0.00320042
+Liquid phase mole fraction of CO2 X_CO2: 0.0196874
+
+Fugacity coefficient for CO2: 0.873875
+Henry's constant for CO2: 5096.49 Bar
+Equilibrium constant for H2O: 0.0189295
+Vapor phase mole fraction of H2O Y_H2O: 0.0188008
+Liquid phase mole fraction of CO2 X_CO2: 0.00680113
+
+Fugacity coefficient for CO2: 0.759857
+Henry's constant for CO2: 5407.3 Bar
+Equilibrium constant for H2O: 0.00922056
+Vapor phase mole fraction of H2O Y_H2O: 0.00911404
+Liquid phase mole fraction of CO2 X_CO2: 0.0115535
+
+Fugacity coefficient for CO2: 0.619864
+Henry's constant for CO2: 5951.66 Bar
+Equilibrium constant for H2O: 0.00500507
+Vapor phase mole fraction of H2O Y_H2O: 0.00492554
+Liquid phase mole fraction of CO2 X_CO2: 0.0158919
+
+Fugacity coefficient for CO2: 0.875616
+Henry's constant for CO2: 5095.76 Bar
+Equilibrium constant for H2O: 0.0191934
+Vapor phase mole fraction of H2O Y_H2O: 0.0190645
+Liquid phase mole fraction of CO2 X_CO2: 0.00671996
+
+Fugacity coefficient for CO2: 0.767939
+Henry's constant for CO2: 5386.82 Bar
+Equilibrium constant for H2O: 0.00958923
+Vapor phase mole fraction of H2O Y_H2O: 0.00948122
+Liquid phase mole fraction of CO2 X_CO2: 0.0112644
+
+Fugacity coefficient for CO2: 0.678581
+Henry's constant for CO2: 5691.84 Bar
+Equilibrium constant for H2O: 0.00638872
+Vapor phase mole fraction of H2O Y_H2O: 0.00629797
+Liquid phase mole fraction of CO2 X_CO2: 0.0142055
+
+Fugacity coefficient for CO2: 0.678433
+Henry's constant for CO2: 5690.07 Bar
+Equilibrium constant for H2O: 0.00638896
+Vapor phase mole fraction of H2O Y_H2O: 0.0062982
+Liquid phase mole fraction of CO2 X_CO2: 0.0142068
+
+Fugacity coefficient for CO2: 0.60984
+Henry's constant for CO2: 6011.35 Bar
+Equilibrium constant for H2O: 0.00478912
+Vapor phase mole fraction of H2O Y_H2O: 0.00471161
+Liquid phase mole fraction of CO2 X_CO2: 0.0161866
+
+Fugacity coefficient for CO2: 0.524697
+Henry's constant for CO2: 6696.13 Bar
+Equilibrium constant for H2O: 0.00319078
+Vapor phase mole fraction of H2O Y_H2O: 0.00313047
+Liquid phase mole fraction of CO2 X_CO2: 0.0189014
+
+Fugacity coefficient for CO2: 0.828053
+Henry's constant for CO2: 2455.5 Bar
+Equilibrium constant for H2O: 0.025399
+Vapor phase mole fraction of H2O Y_H2O: 0.0252197
+Liquid phase mole fraction of CO2 X_CO2: 0.00706627
+
+Fugacity coefficient for CO2: 0.773332
+Henry's constant for CO2: 2496.19 Bar
+Equilibrium constant for H2O: 0.0190069
+Vapor phase mole fraction of H2O Y_H2O: 0.0188409
+Liquid phase mole fraction of CO2 X_CO2: 0.00873772
+
+Fugacity coefficient for CO2: 0.721847
+Henry's constant for CO2: 2535.63 Bar
+Equilibrium constant for H2O: 0.0153215
+Vapor phase mole fraction of H2O Y_H2O: 0.0151681
+Liquid phase mole fraction of CO2 X_CO2: 0.0100121
+
+Fugacity coefficient for CO2: 0.662748
+Henry's constant for CO2: 2581.51 Bar
+Equilibrium constant for H2O: 0.012537
+Vapor phase mole fraction of H2O Y_H2O: 0.012398
+Liquid phase mole fraction of CO2 X_CO2: 0.0110898
+
+Fugacity coefficient for CO2: 0.604193
+Henry's constant for CO2: 2625.6 Bar
+Equilibrium constant for H2O: 0.0106976
+Vapor phase mole fraction of H2O Y_H2O: 0.0105725
+Liquid phase mole fraction of CO2 X_CO2: 0.0116995
+
+Fugacity coefficient for CO2: 0.772118
+Henry's constant for CO2: 2994.56 Bar
+Equilibrium constant for H2O: 0.0170319
+Vapor phase mole fraction of H2O Y_H2O: 0.0168922
+Liquid phase mole fraction of CO2 X_CO2: 0.0082035
+
+Fugacity coefficient for CO2: 0.663256
+Henry's constant for CO2: 3106.6 Bar
+Equilibrium constant for H2O: 0.0111973
+Vapor phase mole fraction of H2O Y_H2O: 0.0110804
+Liquid phase mole fraction of CO2 X_CO2: 0.0104416
+
+Fugacity coefficient for CO2: 0.560136
+Henry's constant for CO2: 3224.39 Bar
+Equilibrium constant for H2O: 0.00830414
+Vapor phase mole fraction of H2O Y_H2O: 0.00820815
+Liquid phase mole fraction of CO2 X_CO2: 0.0115612
+
+Fugacity coefficient for CO2: 0.480034
+Henry's constant for CO2: 3354.42 Bar
+Equilibrium constant for H2O: 0.00651019
+Vapor phase mole fraction of H2O Y_H2O: 0.00643036
+Liquid phase mole fraction of CO2 X_CO2: 0.012262
+
+Fugacity coefficient for CO2: 0.426751
+Henry's constant for CO2: 3486.71 Bar
+Equilibrium constant for H2O: 0.00537075
+Vapor phase mole fraction of H2O Y_H2O: 0.00530185
+Liquid phase mole fraction of CO2 X_CO2: 0.0128286
+
+Fugacity coefficient for CO2: 0.876028
+Henry's constant for CO2: 4299.33 Bar
+Equilibrium constant for H2O: 0.0238021
+Vapor phase mole fraction of H2O Y_H2O: 0.0236916
+Liquid phase mole fraction of CO2 X_CO2: 0.00464305
+
+Fugacity coefficient for CO2: 0.843765
+Henry's constant for CO2: 4356.04 Bar
+Equilibrium constant for H2O: 0.0186075
+Vapor phase mole fraction of H2O Y_H2O: 0.0185018
+Liquid phase mole fraction of CO2 X_CO2: 0.00567916
+
+Fugacity coefficient for CO2: 0.809531
+Henry's constant for CO2: 4418.97 Bar
+Equilibrium constant for H2O: 0.0150137
+Vapor phase mole fraction of H2O Y_H2O: 0.0149133
+Liquid phase mole fraction of CO2 X_CO2: 0.0066903
+
+Fugacity coefficient for CO2: 0.777542
+Henry's constant for CO2: 4480.64 Bar
+Equilibrium constant for H2O: 0.0126487
+Vapor phase mole fraction of H2O Y_H2O: 0.0125531
+Liquid phase mole fraction of CO2 X_CO2: 0.00755413
+
+Fugacity coefficient for CO2: 0.717963
+Henry's constant for CO2: 4604.31 Bar
+Equilibrium constant for H2O: 0.00965239
+Vapor phase mole fraction of H2O Y_H2O: 0.0095659
+Liquid phase mole fraction of CO2 X_CO2: 0.00896152
+
+Fugacity coefficient for CO2: 0.858502
+Henry's constant for CO2: 5136.46 Bar
+Equilibrium constant for H2O: 0.0167117
+Vapor phase mole fraction of H2O Y_H2O: 0.0166209
+Liquid phase mole fraction of CO2 X_CO2: 0.00543248
+
+Fugacity coefficient for CO2: 0.792341
+Henry's constant for CO2: 5313.39 Bar
+Equilibrium constant for H2O: 0.0109128
+Vapor phase mole fraction of H2O Y_H2O: 0.010831
+Liquid phase mole fraction of CO2 X_CO2: 0.00750091
+
+Fugacity coefficient for CO2: 0.732152
+Henry's constant for CO2: 5497.33 Bar
+Equilibrium constant for H2O: 0.00807881
+Vapor phase mole fraction of H2O Y_H2O: 0.00800503
+Liquid phase mole fraction of CO2 X_CO2: 0.00913376
+
+Fugacity coefficient for CO2: 0.679688
+Henry's constant for CO2: 5685.14 Bar
+Equilibrium constant for H2O: 0.00642284
+Vapor phase mole fraction of H2O Y_H2O: 0.00635601
+Liquid phase mole fraction of CO2 X_CO2: 0.0104061
+
+Fugacity coefficient for CO2: 0.634511
+Henry's constant for CO2: 5880.79 Bar
+Equilibrium constant for H2O: 0.00531859
+Vapor phase mole fraction of H2O Y_H2O: 0.00525772
+Liquid phase mole fraction of CO2 X_CO2: 0.0114448
+
+Fugacity coefficient for CO2: 0.82036
+Henry's constant for CO2: 2464.55 Bar
+Equilibrium constant for H2O: 0.0242452
+Vapor phase mole fraction of H2O Y_H2O: 0.0241162
+Liquid phase mole fraction of CO2 X_CO2: 0.00532478
+
+Fugacity coefficient for CO2: 0.738442
+Henry's constant for CO2: 2526.36 Bar
+Equilibrium constant for H2O: 0.0163337
+Vapor phase mole fraction of H2O Y_H2O: 0.0162191
+Liquid phase mole fraction of CO2 X_CO2: 0.00701666
+
+Fugacity coefficient for CO2: 0.680283
+Henry's constant for CO2: 2571.56 Bar
+Equilibrium constant for H2O: 0.0132352
+Vapor phase mole fraction of H2O Y_H2O: 0.0131308
+Liquid phase mole fraction of CO2 X_CO2: 0.00788839
+
+Fugacity coefficient for CO2: 0.648854
+Henry's constant for CO2: 2595.87 Bar
+Equilibrium constant for H2O: 0.0120233
+Vapor phase mole fraction of H2O Y_H2O: 0.0119244
+Liquid phase mole fraction of CO2 X_CO2: 0.0082319
+
+Fugacity coefficient for CO2: 0.607591
+Henry's constant for CO2: 2626.85 Bar
+Equilibrium constant for H2O: 0.010778
+Vapor phase mole fraction of H2O Y_H2O: 0.010686
+Liquid phase mole fraction of CO2 X_CO2: 0.00853253
+
+Fugacity coefficient for CO2: 0.480434
+Henry's constant for CO2: 3353.6 Bar
+Equilibrium constant for H2O: 0.00651886
+Vapor phase mole fraction of H2O Y_H2O: 0.0064596
+Liquid phase mole fraction of CO2 X_CO2: 0.00909049
+
+Fugacity coefficient for CO2: 0.764131
+Henry's constant for CO2: 3002.49 Bar
+Equilibrium constant for H2O: 0.0164169
+Vapor phase mole fraction of H2O Y_H2O: 0.0163161
+Liquid phase mole fraction of CO2 X_CO2: 0.00614487
+
+Fugacity coefficient for CO2: 0.655289
+Henry's constant for CO2: 3115.1 Bar
+Equilibrium constant for H2O: 0.0109185
+Vapor phase mole fraction of H2O Y_H2O: 0.0108339
+Liquid phase mole fraction of CO2 X_CO2: 0.00774874
+
+Fugacity coefficient for CO2: 0.552924
+Henry's constant for CO2: 3234 Bar
+Equilibrium constant for H2O: 0.00813563
+Vapor phase mole fraction of H2O Y_H2O: 0.00806589
+Liquid phase mole fraction of CO2 X_CO2: 0.00857304
+
+Fugacity coefficient for CO2: 0.481259
+Henry's constant for CO2: 3351.93 Bar
+Equilibrium constant for H2O: 0.00653671
+Vapor phase mole fraction of H2O Y_H2O: 0.00647733
+Liquid phase mole fraction of CO2 X_CO2: 0.009084
+
+Fugacity coefficient for CO2: 0.430371
+Henry's constant for CO2: 3475.89 Bar
+Equilibrium constant for H2O: 0.00544751
+Vapor phase mole fraction of H2O Y_H2O: 0.00539557
+Liquid phase mole fraction of CO2 X_CO2: 0.00953412
+
+Fugacity coefficient for CO2: 0.678433
+Henry's constant for CO2: 5690.07 Bar
+Equilibrium constant for H2O: 0.00638896
+Vapor phase mole fraction of H2O Y_H2O: 0.00633835
+Liquid phase mole fraction of CO2 X_CO2: 0.00792148
+
+Fugacity coefficient for CO2: 0.851124
+Henry's constant for CO2: 5155.15 Bar
+Equilibrium constant for H2O: 0.015813
+Vapor phase mole fraction of H2O Y_H2O: 0.015747
+Liquid phase mole fraction of CO2 X_CO2: 0.0041767
+
+Fugacity coefficient for CO2: 0.789721
+Henry's constant for CO2: 5320.87 Bar
+Equilibrium constant for H2O: 0.0107572
+Vapor phase mole fraction of H2O Y_H2O: 0.0106967
+Liquid phase mole fraction of CO2 X_CO2: 0.00562521
+
+Fugacity coefficient for CO2: 0.729657
+Henry's constant for CO2: 5505.58 Bar
+Equilibrium constant for H2O: 0.00798713
+Vapor phase mole fraction of H2O Y_H2O: 0.007932
+Liquid phase mole fraction of CO2 X_CO2: 0.00690387
+
+Fugacity coefficient for CO2: 0.67964
+Henry's constant for CO2: 5685.33 Bar
+Equilibrium constant for H2O: 0.00642155
+Vapor phase mole fraction of H2O Y_H2O: 0.00637084
+Liquid phase mole fraction of CO2 X_CO2: 0.00789785
+
+Fugacity coefficient for CO2: 0.632537
+Henry's constant for CO2: 5890.36 Bar
+Equilibrium constant for H2O: 0.00527488
+Vapor phase mole fraction of H2O Y_H2O: 0.00522831
+Liquid phase mole fraction of CO2 X_CO2: 0.00882846
+
+Fugacity coefficient for CO2: 0.480434
+Henry's constant for CO2: 3353.6 Bar
+Equilibrium constant for H2O: 0.00651886
+Vapor phase mole fraction of H2O Y_H2O: 0.00646962
+Liquid phase mole fraction of CO2 X_CO2: 0.00755411
+
+Fugacity coefficient for CO2: 0.799919
+Henry's constant for CO2: 2969.86 Bar
+Equilibrium constant for H2O: 0.0195491
+Vapor phase mole fraction of H2O Y_H2O: 0.019462
+Liquid phase mole fraction of CO2 X_CO2: 0.00446041
+
+Fugacity coefficient for CO2: 0.618469
+Henry's constant for CO2: 3157.84 Bar
+Equilibrium constant for H2O: 0.00977573
+Vapor phase mole fraction of H2O Y_H2O: 0.0097104
+Liquid phase mole fraction of CO2 X_CO2: 0.00668414
+
+Fugacity coefficient for CO2: 0.480688
+Henry's constant for CO2: 3356.28 Bar
+Equilibrium constant for H2O: 0.00651887
+Vapor phase mole fraction of H2O Y_H2O: 0.00646964
+Liquid phase mole fraction of CO2 X_CO2: 0.00755272
+
+Fugacity coefficient for CO2: 0.404326
+Henry's constant for CO2: 3565.7 Bar
+Equilibrium constant for H2O: 0.00489112
+Vapor phase mole fraction of H2O Y_H2O: 0.00485091
+Liquid phase mole fraction of CO2 X_CO2: 0.00822053
+
+Fugacity coefficient for CO2: 0.328622
+Henry's constant for CO2: 4019.6 Bar
+Equilibrium constant for H2O: 0.0032647
+Vapor phase mole fraction of H2O Y_H2O: 0.00323378
+Liquid phase mole fraction of CO2 X_CO2: 0.00946958
+
+Fugacity coefficient for CO2: 0.678433
+Henry's constant for CO2: 5690.07 Bar
+Equilibrium constant for H2O: 0.00638896
+Vapor phase mole fraction of H2O Y_H2O: 0.00634607
+Liquid phase mole fraction of CO2 X_CO2: 0.00671343
+
+Fugacity coefficient for CO2: 0.875616
+Henry's constant for CO2: 5095.76 Bar
+Equilibrium constant for H2O: 0.0191934
+Vapor phase mole fraction of H2O Y_H2O: 0.0191375
+Liquid phase mole fraction of CO2 X_CO2: 0.00291632
+
+Fugacity coefficient for CO2: 0.767939
+Henry's constant for CO2: 5386.82 Bar
+Equilibrium constant for H2O: 0.00958923
+Vapor phase mole fraction of H2O Y_H2O: 0.00954046
+Liquid phase mole fraction of CO2 X_CO2: 0.00508694
+
+Fugacity coefficient for CO2: 0.678581
+Henry's constant for CO2: 5691.84 Bar
+Equilibrium constant for H2O: 0.00638872
+Vapor phase mole fraction of H2O Y_H2O: 0.00634584
+Liquid phase mole fraction of CO2 X_CO2: 0.00671313
+
+Fugacity coefficient for CO2: 0.60984
+Henry's constant for CO2: 6011.35 Bar
+Equilibrium constant for H2O: 0.00478912
+Vapor phase mole fraction of H2O Y_H2O: 0.0047507
+Liquid phase mole fraction of CO2 X_CO2: 0.00802314
+
+Fugacity coefficient for CO2: 0.524697
+Henry's constant for CO2: 6696.13 Bar
+Equilibrium constant for H2O: 0.00319078
+Vapor phase mole fraction of H2O Y_H2O: 0.00315779
+Liquid phase mole fraction of CO2 X_CO2: 0.010341
+
+Fugacity coefficient for CO2: 0.480434
+Henry's constant for CO2: 3353.6 Bar
+Equilibrium constant for H2O: 0.00651886
+Vapor phase mole fraction of H2O Y_H2O: 0.00647747
+Liquid phase mole fraction of CO2 X_CO2: 0.00634896
+
+Fugacity coefficient for CO2: 0.678433
+Henry's constant for CO2: 5690.07 Bar
+Equilibrium constant for H2O: 0.00638896
+Vapor phase mole fraction of H2O Y_H2O: 0.00635207
+Liquid phase mole fraction of CO2 X_CO2: 0.00577342
+
